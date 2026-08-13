@@ -1,0 +1,76 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        Bank bank = new Bank();
+
+        while (true) {
+
+            System.out.println("\n===== BANKING MANAGEMENT SYSTEM =====");
+            System.out.println("1. Create Account");
+            System.out.println("2. Deposit");
+            System.out.println("3. Withdraw");
+            System.out.println("4. Balance Check");
+            System.out.println("5. Exit");
+            System.out.print("Enter your choice: ");
+
+            int choice = sc.nextInt();
+
+            switch (choice) {
+
+                case 1:
+                    System.out.print("Enter Account ID: ");
+                    int id = sc.nextInt();
+
+                    sc.nextLine();
+
+                    System.out.print("Enter Account Holder Name: ");
+                    String name = sc.nextLine();
+
+                    System.out.print("Enter Initial Balance: ");
+                    double balance = sc.nextDouble();
+
+                    bank.createAccount(id, name, balance);
+                    break;
+
+                case 2:
+                    System.out.print("Enter Account ID: ");
+                    int depositId = sc.nextInt();
+
+                    System.out.print("Enter Deposit Amount: ");
+                    double depositAmount = sc.nextDouble();
+
+                    bank.deposit(depositId, depositAmount);
+                    break;
+
+                case 3:
+                    System.out.print("Enter Account ID: ");
+                    int withdrawId = sc.nextInt();
+
+                    System.out.print("Enter Withdraw Amount: ");
+                    double withdrawAmount = sc.nextDouble();
+
+                    bank.withdraw(withdrawId, withdrawAmount);
+                    break;
+
+                case 4:
+                    System.out.print("Enter Account ID: ");
+                    int balanceId = sc.nextInt();
+
+                    bank.checkBalance(balanceId);
+                    break;
+
+                case 5:
+                    System.out.println("Thank you for using Banking System!");
+                    sc.close();
+                    return;
+
+                default:
+                    System.out.println("Invalid choice!");
+            }
+        }
+    }
+}
