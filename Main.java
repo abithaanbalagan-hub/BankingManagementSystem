@@ -1,4 +1,4 @@
-import java.util.Scanner;
+ import java.util.Scanner;
 
 public class Main {
 
@@ -12,9 +12,7 @@ public class Main {
             System.out.println("\n===== BANKING MANAGEMENT SYSTEM =====");
             System.out.println("1. Create Account");
             System.out.println("2. Deposit");
-            System.out.println("3. Withdraw");
-            System.out.println("4. Balance Check");
-            System.out.println("5. Exit");
+            System.out.println("3. Exit");
             System.out.print("Enter your choice: ");
 
             int choice = sc.nextInt();
@@ -41,30 +39,13 @@ public class Main {
                     int depositId = sc.nextInt();
 
                     System.out.print("Enter Deposit Amount: ");
-                    double depositAmount = sc.nextDouble();
+                    double amount = sc.nextDouble();
 
-                    bank.deposit(depositId, depositAmount);
+                    bank.deposit(depositId, amount);
                     break;
 
                 case 3:
-                    System.out.print("Enter Account ID: ");
-                    int withdrawId = sc.nextInt();
-
-                    System.out.print("Enter Withdraw Amount: ");
-                    double withdrawAmount = sc.nextDouble();
-
-                    bank.withdraw(withdrawId, withdrawAmount);
-                    break;
-
-                case 4:
-                    System.out.print("Enter Account ID: ");
-                    int balanceId = sc.nextInt();
-
-                    bank.checkBalance(balanceId);
-                    break;
-
-                case 5:
-                    System.out.println("Thank you for using Banking System!");
+                    System.out.println("Thank you!");
                     sc.close();
                     return;
 
