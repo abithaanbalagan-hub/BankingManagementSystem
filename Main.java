@@ -7,51 +7,42 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Bank bank = new Bank();
 
-        while (true) {
+        System.out.println("1. Create Account");
+        System.out.println("2. Withdraw");
 
-            System.out.println("\n===== BANKING MANAGEMENT SYSTEM =====");
-            System.out.println("1. Create Account");
-            System.out.println("2. Deposit");
-            System.out.println("3. Exit");
-            System.out.print("Enter your choice: ");
+        System.out.print("Enter choice: ");
+        int choice = sc.nextInt();
 
-            int choice = sc.nextInt();
+        if (choice == 1) {
 
-            switch (choice) {
+            System.out.print("Enter Account ID: ");
+            int id = sc.nextInt();
 
-                case 1:
-                    System.out.print("Enter Account ID: ");
-                    int id = sc.nextInt();
+            sc.nextLine();
 
-                    sc.nextLine();
+            System.out.print("Enter Name: ");
+            String name = sc.nextLine();
 
-                    System.out.print("Enter Account Holder Name: ");
-                    String name = sc.nextLine();
+            System.out.print("Enter Balance: ");
+            double balance = sc.nextDouble();
 
-                    System.out.print("Enter Initial Balance: ");
-                    double balance = sc.nextDouble();
+            bank.createAccount(id, name, balance);
 
-                    bank.createAccount(id, name, balance);
-                    break;
+        } else if (choice == 2) {
 
-                case 2:
-                    System.out.print("Enter Account ID: ");
-                    int depositId = sc.nextInt();
+            System.out.print("Enter Account ID: ");
+            int id = sc.nextInt();
 
-                    System.out.print("Enter Deposit Amount: ");
-                    double amount = sc.nextDouble();
+            System.out.print("Enter Withdraw Amount: ");
+            double amount = sc.nextDouble();
 
-                    bank.deposit(depositId, amount);
-                    break;
+            bank.withdraw(id, amount);
 
-                case 3:
-                    System.out.println("Thank you!");
-                    sc.close();
-                    return;
+        } else {
 
-                default:
-                    System.out.println("Invalid choice!");
-            }
+            System.out.println("Invalid choice!");
         }
+
+        sc.close();
     }
 }

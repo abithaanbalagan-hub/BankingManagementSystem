@@ -4,35 +4,32 @@ public class Bank {
 
     HashMap<Integer, Account> accounts = new HashMap<>();
 
-    // Create Account
-    public void createAccount(int accountId, String name, double balance) {
+    public void createAccount(int id, String name, double balance) {
 
-        if (accounts.containsKey(accountId)) {
-            System.out.println("Account ID already exists!");
+        if (accounts.containsKey(id)) {
+            System.out.println("Account already exists!");
             return;
         }
 
-        Account account = new Account(accountId, name, balance);
-
-        accounts.put(accountId, account);
-
+        accounts.put(id, new Account(id, name, balance));
         System.out.println("Account created successfully!");
     }
 
-    // Deposit
-    public void deposit(int accountId, double amount) {
+    public void withdraw(int id, double amount) {
 
-        Account account = accounts.get(accountId);
+        Account account = accounts.get(id);
 
         if (account == null) {
             System.out.println("Account not found!");
             return;
         }
 
-        account.deposit(amount);
-
-        System.out.println("Amount deposited successfully!");
-        System.out.println("Deposited Amount : " + amount);
-        System.out.println("Current Balance  : " + account.getBalance());
+        if (account.withdraw(amount)) {
+            System.out.println("Amount withdrawn successfully!");
+            System.out.println("Remaining Balance: "
+                    + account.getBalance());
+        } else {
+            System.out.println("Insufficient balance!");
+        }
     }
 }
