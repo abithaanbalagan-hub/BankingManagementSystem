@@ -1,4 +1,5 @@
- import java.util.Scanner;
+
+import java.util.Scanner;
 
 public class Main {
 
@@ -7,42 +8,70 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Bank bank = new Bank();
 
-        System.out.println("1. Create Account");
-        System.out.println("2. Withdraw");
+        while (true) {
 
-        System.out.print("Enter choice: ");
-        int choice = sc.nextInt();
+            System.out.println("\n===== BANKING MANAGEMENT SYSTEM =====");
+            System.out.println("1. Create Account");
+            System.out.println("2. Deposit");
+            System.out.println("3. Withdraw");
+            System.out.println("4. Check Balance");
+            System.out.println("5. Exit");
 
-        if (choice == 1) {
+            System.out.print("Enter choice: ");
+            int choice = sc.nextInt();
 
-            System.out.print("Enter Account ID: ");
-            int id = sc.nextInt();
+            switch (choice) {
 
-            sc.nextLine();
+                case 1:
+                    System.out.print("Enter Account ID: ");
+                    int id = sc.nextInt();
 
-            System.out.print("Enter Name: ");
-            String name = sc.nextLine();
+                    sc.nextLine();
 
-            System.out.print("Enter Balance: ");
-            double balance = sc.nextDouble();
+                    System.out.print("Enter Name: ");
+                    String name = sc.nextLine();
 
-            bank.createAccount(id, name, balance);
+                    System.out.print("Enter Initial Balance: ");
+                    double balance = sc.nextDouble();
 
-        } else if (choice == 2) {
+                    bank.createAccount(id, name, balance);
+                    break;
 
-            System.out.print("Enter Account ID: ");
-            int id = sc.nextInt();
+                case 2:
+                    System.out.print("Enter Account ID: ");
+                    int depositId = sc.nextInt();
 
-            System.out.print("Enter Withdraw Amount: ");
-            double amount = sc.nextDouble();
+                    System.out.print("Enter Deposit Amount: ");
+                    double deposit = sc.nextDouble();
 
-            bank.withdraw(id, amount);
+                    bank.deposit(depositId, deposit);
+                    break;
 
-        } else {
+                case 3:
+                    System.out.print("Enter Account ID: ");
+                    int withdrawId = sc.nextInt();
 
-            System.out.println("Invalid choice!");
+                    System.out.print("Enter Withdraw Amount: ");
+                    double withdraw = sc.nextDouble();
+
+                    bank.withdraw(withdrawId, withdraw);
+                    break;
+
+                case 4:
+                    System.out.print("Enter Account ID: ");
+                    int balanceId = sc.nextInt();
+
+                    bank.checkBalance(balanceId);
+                    break;
+
+                case 5:
+                    System.out.println("Thank you!");
+                    sc.close();
+                    return;
+
+                default:
+                    System.out.println("Invalid choice!");
+            }
         }
-
-        sc.close();
     }
 }
