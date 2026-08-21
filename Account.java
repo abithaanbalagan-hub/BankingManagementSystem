@@ -17,4 +17,14 @@ public class Account {
     public void deposit(double amount) {
         balance = balance + amount;
     }
+
+    public boolean withdraw(double amount) {
+
+        if (amount <= balance) {
+            balance = balance - amount;
+            return true;
+        }
+
+        return false;
+    }
 }

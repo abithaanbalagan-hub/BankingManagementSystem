@@ -14,7 +14,6 @@ public class Bank {
         }
 
         Account account = new Account(id, name, balance);
-
         accounts.put(id, account);
 
         System.out.println("Account created successfully!");
@@ -33,8 +32,31 @@ public class Bank {
         account.deposit(amount);
 
         System.out.println("Amount deposited successfully!");
-        System.out.println("Account ID      : " + id);
-        System.out.println("Deposited Amount: " + amount);
-        System.out.println("Current Balance : " + account.getBalance());
+        System.out.println("Current Balance: " + account.getBalance());
+    }
+
+    // Withdraw
+    public void withdraw(int id, double amount) {
+
+        Account account = accounts.get(id);
+
+        if (account == null) {
+            System.out.println("Account not found!");
+            return;
+        }
+
+        if (amount <= 0) {
+            System.out.println("Invalid withdrawal amount!");
+            return;
+        }
+
+        if (account.withdraw(amount)) {
+            System.out.println("Amount withdrawn successfully!");
+            System.out.println("Withdrawn Amount: " + amount);
+            System.out.println("Current Balance: "
+                    + account.getBalance());
+        } else {
+            System.out.println("Insufficient balance!");
+        }
     }
 }
