@@ -1,9 +1,8 @@
-
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 
 public class Bank {
 
-    LinkedHashMap<Integer, Account> accounts = new LinkedHashMap<>();
+    HashMap<Integer, Account> accounts = new HashMap<>();
 
     // Create Account
     public void createAccount(int id, String name, double balance) {
@@ -45,18 +44,27 @@ public class Bank {
             return;
         }
 
-        if (amount <= 0) {
-            System.out.println("Invalid withdrawal amount!");
-            return;
-        }
-
         if (account.withdraw(amount)) {
             System.out.println("Amount withdrawn successfully!");
-            System.out.println("Withdrawn Amount: " + amount);
-            System.out.println("Current Balance: "
-                    + account.getBalance());
+            System.out.println("Current Balance: " + account.getBalance());
         } else {
             System.out.println("Insufficient balance!");
         }
+    }
+
+    // Check Balance
+    public void checkBalance(int id) {
+
+        Account account = accounts.get(id);
+
+        if (account == null) {
+            System.out.println("Account not found!");
+            return;
+        }
+
+        System.out.println("\n===== ACCOUNT DETAILS =====");
+        System.out.println("Account ID : " + account.accountId);
+        System.out.println("Name       : " + account.name);
+        System.out.println("Balance    : " + account.getBalance());
     }
 }

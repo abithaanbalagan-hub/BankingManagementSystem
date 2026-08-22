@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class Main {
@@ -14,7 +13,8 @@ public class Main {
             System.out.println("1. Create Account");
             System.out.println("2. Deposit");
             System.out.println("3. Withdraw");
-            System.out.println("4. Exit");
+            System.out.println("4. Check Balance");
+            System.out.println("5. Exit");
 
             System.out.print("Enter choice: ");
             int choice = sc.nextInt();
@@ -57,6 +57,13 @@ public class Main {
                     break;
 
                 case 4:
+                    System.out.print("Enter Account ID: ");
+                    int balanceId = sc.nextInt();
+
+                    bank.checkBalance(balanceId);
+                    break;
+
+                case 5:
                     System.out.println("Thank you!");
                     sc.close();
                     return;
